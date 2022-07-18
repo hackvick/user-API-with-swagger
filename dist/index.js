@@ -55,7 +55,7 @@ app.listen(config_1.default, () => {
 });
 // RegisterRoutes(app)
 try {
-    const swaggerDocument = require("./swag/swagger.json");
+    const swaggerDocument = require("../swagger.json");
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 catch (err) {

@@ -41,7 +41,7 @@ connection.on('open',(err:unknown)=>{
 
 // RegisterRoutes(app)
 try{
-    const swaggerDocument = require("./swag/swagger.json")
+    const swaggerDocument = require("../swagger.json")
     app.use('/docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
 }catch(err){
     console.error("Unable to read swagger.json",err);

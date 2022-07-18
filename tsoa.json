@@ -4,7 +4,7 @@
         "noImplicitAdditionalProperties": "throw-on-extras",
         "controllerPathGlobs": ["./src/conroller/v1/admincontroller.ts"],
         "spec": {
-            "outputDirectory": "./src/swag",
+            "outputDirectory": ".",
             "specVersion": 3,
             "basePath": "api/v1/",
             "securityDefinitions": {
@@ -15,10 +15,6 @@
                 "description": "JWT Authorization"
               }
               }
-          },
-    "routes":{
-        "routesDir": "./src/swag",
-        "authenticationModule": "./src/authentication/jwt.ts"
-
-    }
+          }
+    
 }
