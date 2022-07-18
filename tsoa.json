@@ -1,0 +1,24 @@
+{
+    
+        "entryFile":"./src/index.ts",
+        "noImplicitAdditionalProperties": "throw-on-extras",
+        "controllerPathGlobs": ["./src/conroller/v1/admincontroller.ts"],
+        "spec": {
+            "outputDirectory": "./src/swag",
+            "specVersion": 3,
+            "basePath": "api/v1/",
+            "securityDefinitions": {
+              "Bearer": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "description": "JWT Authorization"
+              }
+              }
+          },
+    "routes":{
+        "routesDir": "./src/swag",
+        "authenticationModule": "./src/authentication/jwt.ts"
+
+    }
+}

@@ -1,0 +1,529 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"responsei": {
+				"properties": {
+					"status": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"additionalProperties": false,
+						"type": "object"
+					}
+				},
+				"required": [
+					"status",
+					"message",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"Bearer": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header",
+				"description": "JWT Authorization"
+			}
+		}
+	},
+	"info": {
+		"title": "basic",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/admin/user/create": {
+			"post": {
+				"operationId": "Adduser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"data": {},
+												"message": {
+													"type": "string"
+												},
+												"status": {
+													"type": "number",
+													"format": "double"
+												}
+											},
+											"required": [
+												"data",
+												"message",
+												"status"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {}
+											},
+											"required": [
+												"errors"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"userRoll": 3,
+											"Password": "password123",
+											"Phone": 9066665270,
+											"Email": "joesung@rediffmail.com",
+											"LastName": "sung",
+											"FirstName": "joe"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Signup"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"userRoll": {
+										"type": "number",
+										"format": "double"
+									},
+									"Password": {
+										"type": "string"
+									},
+									"Phone": {
+										"type": "number",
+										"format": "double"
+									},
+									"Email": {
+										"type": "string"
+									},
+									"LastName": {
+										"type": "string"
+									},
+									"FirstName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"userRoll",
+									"Password",
+									"Phone",
+									"Email",
+									"LastName",
+									"FirstName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/user/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"Lemail": "user6@gmail.com",
+											"Lpassword": "user123"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Login"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"Lpassword": {
+										"type": "string"
+									},
+									"Lemail": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"Lpassword",
+									"Lemail"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/user/verifyotp": {
+			"post": {
+				"operationId": "Matchmyotp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"email": "user8@gmail.com",
+											"otp": "2597"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Verify user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"otp": {
+										"type": "number",
+										"format": "double"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"otp",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/user/allusers/protected": {
+			"get": {
+				"operationId": "Protected",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Test Auth"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/admin/user/forgotpassword/matchotp": {
+			"post": {
+				"operationId": "Chngpwd",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"newotp": 2597,
+											"newpassword": "user234"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Forgot Password & Match Otp"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "email",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"newpassword": {
+										"type": "string"
+									},
+									"newotp": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"newpassword",
+									"newotp"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/user/delete": {
+			"delete": {
+				"operationId": "Deleteuser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "62a9d03be95d92b405381c70"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Delete User"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin/user/update": {
+			"patch": {
+				"operationId": "Updateuser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/responsei"
+										},
+										{
+											"additionalProperties": false,
+											"type": "object"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "62a9d03be95d92b405381c70",
+											"FirstName": "Rajat"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Update User"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"mydata": {}
+								},
+								"required": [
+									"mydata"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/classes": {
+			"get": {
+				"operationId": "Getclass",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"All_Classes"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/api/v1"
+		}
+	]
+}
