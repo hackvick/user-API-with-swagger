@@ -36,17 +36,13 @@ const tsoa_1 = require("tsoa");
 const nodemailer_1 = __importDefault(require("../../Services/nodemailer"));
 // import IResponse from "../../utils/iResponse"
 const app = (0, express_1.default)();
-let ExpressClass = class ExpressClass {
+class ExpressClass {
     constructor(req, res, next) {
         this.req = req;
         this.res = res;
         this.next = next;
     }
-};
-ExpressClass = __decorate([
-    (0, tsoa_1.Tags)("User"),
-    __metadata("design:paramtypes", [Object, Object, Function])
-], ExpressClass);
+}
 let Admin = class Admin extends tsoa_1.Controller {
     adduser(request) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -262,7 +258,6 @@ let Admin = class Admin extends tsoa_1.Controller {
     }
 };
 __decorate([
-    (0, tsoa_1.Tags)("Signup"),
     (0, tsoa_1.Post)("/admin/user/create"),
     (0, tsoa_1.Example)({
         userRoll: 3,
@@ -278,7 +273,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "adduser", null);
 __decorate([
-    (0, tsoa_1.Tags)("Login"),
     (0, tsoa_1.Post)("admin/user/login"),
     (0, tsoa_1.Example)({
         Lemail: "user6@gmail.com",
@@ -290,7 +284,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "login", null);
 __decorate([
-    (0, tsoa_1.Tags)("Verify user"),
     (0, tsoa_1.Post)("/admin/user/verifyotp"),
     (0, tsoa_1.Example)({
         email: "user8@gmail.com",
@@ -302,7 +295,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "matchmyotp", null);
 __decorate([
-    (0, tsoa_1.Tags)("Test Auth"),
     (0, tsoa_1.Security)("Bearer"),
     (0, tsoa_1.Get)("/admin/user/allusers/protected"),
     __metadata("design:type", Function),
@@ -310,14 +302,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "protected", null);
 __decorate([
-    (0, tsoa_1.Tags)("Forgot Password"),
     (0, tsoa_1.Security)("Bearer"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "mailer", null);
 __decorate([
-    (0, tsoa_1.Tags)("Forgot Password & Match Otp"),
     (0, tsoa_1.Security)("Bearer"),
     (0, tsoa_1.Post)("/admin/user/forgotpassword/matchotp"),
     (0, tsoa_1.Example)({
@@ -331,7 +321,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "chngpwd", null);
 __decorate([
-    (0, tsoa_1.Tags)("Delete User"),
     (0, tsoa_1.Security)("Bearer"),
     (0, tsoa_1.Delete)("/admin/user/delete"),
     (0, tsoa_1.Example)({
@@ -343,7 +332,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "deleteuser", null);
 __decorate([
-    (0, tsoa_1.Tags)("Update User"),
     (0, tsoa_1.Security)("Bearer"),
     (0, tsoa_1.Patch)("/admin/user/update"),
     (0, tsoa_1.Example)({
@@ -357,7 +345,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "updateuser", null);
 __decorate([
-    (0, tsoa_1.Tags)("All_Classes"),
     (0, tsoa_1.Security)("Bearer"),
     (0, tsoa_1.Get)("/admin/classes"),
     __metadata("design:type", Function),
@@ -365,6 +352,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], Admin.prototype, "getclass", null);
 Admin = __decorate([
+    (0, tsoa_1.Tags)("USER API's"),
     (0, tsoa_1.Route)()
 ], Admin);
 exports.Admin = Admin;

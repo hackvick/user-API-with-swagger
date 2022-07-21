@@ -39,7 +39,7 @@ import sendMail from "../../Services/nodemailer";
 
 
 const app = express();
-@Tags("User")
+
 class ExpressClass {
   req: Request;
   res: Response;
@@ -56,10 +56,10 @@ class ExpressClass {
   //     console.log("hgjk",error.message);
   // }
 }
-
+@Tags("USER API's")
 @Route()
 export class Admin extends Controller {
-  @Tags("Signup")
+  
   @Post("/admin/user/create")
   @Example
   ({
@@ -122,7 +122,7 @@ export class Admin extends Controller {
   }
 
   // ====================Login=================
-  @Tags("Login")
+  
   @Post("admin/user/login")
   @Example
   ({
@@ -171,7 +171,7 @@ export class Admin extends Controller {
     }
   }
   // ============================Verify User ===============================
-  @Tags("Verify user")
+
   @Post("/admin/user/verifyotp")
   @Example
   ({
@@ -206,7 +206,7 @@ export class Admin extends Controller {
   }
 
   // ================Protected route===================
-  @Tags("Test Auth")
+ 
   @Security("Bearer")
   @Get("/admin/user/allusers/protected")
 
@@ -224,7 +224,7 @@ export class Admin extends Controller {
   }
 
   //===================== Forgot Password send Mail=======================
-  @Tags("Forgot Password")
+
   @Security("Bearer")
   async mailer(req: Request, res: Response) {
     try {
@@ -247,7 +247,7 @@ export class Admin extends Controller {
   }
 
   //===================== Forgot Password Match otp =================================
-  @Tags("Forgot Password & Match Otp")
+  
   @Security("Bearer")
   @Post("/admin/user/forgotpassword/matchotp")
   @Example({
@@ -284,7 +284,7 @@ export class Admin extends Controller {
     }
   }
   // ============================Delete User=====================
-  @Tags("Delete User")
+  
   @Security("Bearer")
   @Delete("/admin/user/delete")
   @Example({
@@ -305,7 +305,7 @@ export class Admin extends Controller {
   }
 
   // ============================update user=========================
-  @Tags("Update User")
+
   @Security("Bearer")
   @Patch("/admin/user/update")
   @Example({
@@ -344,7 +344,7 @@ export class Admin extends Controller {
 
 
   // ======================Get class names=====================
-  @Tags("All_Classes")
+ 
   @Security("Bearer")
   @Get("/admin/classes")
   public async getclass() {
